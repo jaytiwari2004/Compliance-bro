@@ -1,13 +1,13 @@
 import React from "react";
 import Seo from "../Components/Seo.jsx";
-import TopNotice from "../components/TopNotice.jsx";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import Features from "../components/Features";
-import ProcessStep from "../components/ProcessStep";
-import Services from "../components/Services";
-import FAQ from "../components/FAQ";
-import Footer from "../components/Footer";
+import TopNotice from "../Components/Topnotice.jsx";
+import Navbar from "../Components/Navbar.jsx";
+import Hero from "../Components/Hero";
+import Features from "../Components/Features";
+import ProcessStep from "../Components/ProcessStep";
+import Services from "../Components/Services";
+import FAQ from "../Components/FAQ";
+import Footer from "../Components/Footer";
 
 export default function Home(){
   return (
