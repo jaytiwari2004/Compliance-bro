@@ -15,7 +15,7 @@ export default function Navbar() {
 
   // WhatsApp link
   const whatsappMessage = "Welcome to ComplianceBro! How can we help you today?";
-  const wpUrl = `https://wa.me/917000081173?text=${encodeURIComponent(
+  const wpUrl = `https://wa.me/917999981173?text=${encodeURIComponent(
     whatsappMessage
   )}`;
 
