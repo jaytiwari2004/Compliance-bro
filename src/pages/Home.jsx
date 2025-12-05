@@ -1,6 +1,6 @@
 import React from "react";
 import Seo from "../Components/Seo.jsx";
-import TopNotice from "../components/Topnotice.jsx  ";
+import TopNotice from "../components/TopNotice.jsx";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
