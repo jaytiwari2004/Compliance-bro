@@ -30,6 +30,7 @@
     "postcss-value-parser": "^4.2.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
+    "react-helmet": "^6.1.0",
     "rollup": "^4.53.3",
     "source-map-js": "^1.2.1",
     "tinyglobby": "^0.2.15",
