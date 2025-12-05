@@ -1,5 +1,5 @@
 import React from "react";
-import SEO from "../components/SEO";
+import Seo from "../Components/Seo.jsx";
 import TopNotice from "../components/TopNotice";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
