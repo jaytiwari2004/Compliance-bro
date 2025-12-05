@@ -1,5 +1,5 @@
 import React from "react";
-import Seo from "../Components/Seo.jsx";
+
 import TopNotice from "../Components/Topnotice.jsx";
 import Navbar from "../Components/Navbar.jsx";
 import Hero from "../Components/Hero";
@@ -12,7 +12,7 @@ import Footer from "../Components/Footer";
 export default function Home(){
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-slate-800">
-      <SEO />
+      
      
       <Navbar />
       <Hero />
