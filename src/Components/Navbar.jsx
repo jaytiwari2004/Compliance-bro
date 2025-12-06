@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [openCompliance, setOpenCompliance] = useState(false); // NEW
+  const [openCompliance, setOpenCompliance] = useState(false);
+
+  // Mobile dropdown states
+  const [mobileRegOpen, setMobileRegOpen] = useState(false);
+  const [mobileCompOpen, setMobileCompOpen] = useState(false);
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -15,9 +20,7 @@ export default function Navbar() {
   }, []);
 
   const whatsappMessage = "Welcome to ComplianceBro! How can we help you today?";
-  const wpUrl = `https://wa.me/917999981173?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+  const wpUrl = `https://wa.me/917999981173?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <nav
@@ -41,16 +44,14 @@ export default function Navbar() {
 
             <span
               className={`hidden lg:inline px-3 py-1 text-xs font-semibold rounded-full uppercase ${
-                scrolled
-                  ? "bg-[#00A7B6] text-white"
-                  : "bg-emerald-100 text-emerald-600"
+                scrolled ? "bg-[#00A7B6] text-white" : "bg-emerald-100 text-emerald-600"
               }`}
             >
               Early Bird Offer
             </span>
           </div>
 
-          {/* -------- DESKTOP MENU -------- */}
+          {/* -------------------- DESKTOP MENU -------------------- */}
           <div
             className={`hidden lg:flex items-center gap-10 text-[15px] font-semibold ${
               scrolled ? "text-gray-200" : "text-gray-700"
@@ -58,7 +59,7 @@ export default function Navbar() {
           >
             <button className="hover:text-red-500">Startup India</button>
 
-            {/* ------ REGISTRATION DROPDOWN ------ */}
+            {/* ----------- REGISTRATION DROPDOWN (DESKTOP) ----------- */}
             <div
               className="relative"
               onMouseEnter={() => setOpenDropdown(true)}
@@ -67,15 +68,12 @@ export default function Navbar() {
               <button className="hover:text-red-500">Registration</button>
 
               {openDropdown && (
-                <div className="absolute -left-28 mt-0 bg-[#F7F9FB] border border-gray-200 
-                shadow-2xl rounded-xl p-8 w-[950px] grid grid-cols-4 gap-12 z-50">
+                <div className="absolute left-0 mt-2 bg-[#F7F9FB] border border-gray-200 shadow-2xl rounded-xl p-8 w-[950px] grid grid-cols-4 gap-12 z-50">
                   
-                  {/* COLUMN — Company */}
+                  {/* COMPANY REGISTRATION */}
                   <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220]">
-                      COMPANY REGISTRATION
-                    </h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                    <h3 className="text-[13px] font-bold text-[#0B1220]">COMPANY REGISTRATION</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
                       {[
                         "Proprietorship Registration",
                         "Partnership Registration",
@@ -83,92 +81,87 @@ export default function Navbar() {
                         "One Person Company Registration",
                         "Private Limited Company Registration",
                         "Public Limited Company Registration",
-                      ].map((item) => (
+                      ].map(item => (
                         <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
-                          <ChevronRight size={16} className="text-red-600" /> {item}
+                          <ChevronRight className="text-red-600" size={16} /> {item}
                         </li>
                       ))}
                     </ul>
 
-                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6">
-                      SPECIAL ENTITY REGISTRATION
-                    </h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
-                      {["Section-8 Company Registration", "Trust Registration", "Society Registration"].map((item) => (
+                    <h3 className="text-[13px] font-bold mt-6">SPECIAL ENTITY REGISTRATION</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
+                      {[
+                        "Section-8 Company Registration",
+                        "Trust Registration",
+                        "Society Registration",
+                      ].map(item => (
                         <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
-                          <ChevronRight size={16} className="text-red-600" /> {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* COLUMN — Industry */}
-                  <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220]">
-                      INDUSTRY SPECIFIC REGISTRATION
-                    </h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
-                      {["FSSAI Registration", "Import Export Code Registration"].map((item) => (
-                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
-                          <ChevronRight size={16} className="text-red-600" /> {item}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6">TAX REGISTRATION</h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
-                      {["GST Registration", "PF ESI Registration"].map((item) => (
-                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
-                          <ChevronRight size={16} className="text-red-600" /> {item}
+                          <ChevronRight className="text-red-600" size={16} /> {item}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* COLUMN — IPR */}
+                  {/* INDUSTRY REGISTRATION */}
                   <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220]">
-                      INTELLECTUAL PROPERTY RIGHTS
-                    </h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
-                      {["Trademark Registration", "Copyright"].map((item) => (
+                    <h3 className="text-[13px] font-bold">INDUSTRY SPECIFIC REGISTRATION</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
+                      {["FSSAI Registration", "Import Export Code Registration"].map(item => (
                         <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
-                          <ChevronRight size={16} className="text-red-600" /> {item}
+                          <ChevronRight className="text-red-600" size={16} /> {item}
                         </li>
                       ))}
                     </ul>
 
-                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6">CERTIFICATION</h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                    <h3 className="text-[13px] font-bold mt-6">TAX REGISTRATION</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
+                      {["GST Registration", "PF ESI Registration"].map(item => (
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* IPR */}
+                  <div>
+                    <h3 className="text-[13px] font-bold">INTELLECTUAL PROPERTY RIGHTS</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
+                      {["Trademark Registration", "Copyright"].map(item => (
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <h3 className="text-[13px] font-bold mt-6">CERTIFICATION</h3>
+                    <ul className="mt-3">
                       <li className="flex items-center gap-2 hover:text-[#00A7B6]">
-                        <ChevronRight size={16} className="text-red-600" /> ISO Certification
+                        <ChevronRight className="text-red-600" size={16} /> ISO Certification
                       </li>
                     </ul>
                   </div>
 
-                  {/* COLUMN — After Incorporation */}
+                  {/* AFTER INCORPORATION */}
                   <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220]">
-                      THINGS TO DO AFTER INCORPORATION
-                    </h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                    <h3 className="text-[13px] font-bold">THINGS TO DO AFTER INCORPORATION</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
                       {[
                         "Stage-1: Basic Necessity",
                         "Stage-2: Industry Specific Necessity",
                         "Stage-3: Go Live & Get Funding",
-                      ].map((item) => (
+                      ].map(item => (
                         <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
-                          <ChevronRight size={16} className="text-red-600" /> {item}
+                          <ChevronRight className="text-red-600" size={16} /> {item}
                         </li>
                       ))}
                     </ul>
                   </div>
-
                 </div>
               )}
             </div>
 
-            {/* -------- NEW COMPLIANCE DROPDOWN -------- */}
+            {/* ----------- COMPLIANCE DROPDOWN (DESKTOP) ----------- */}
             <div
               className="relative"
               onMouseEnter={() => setOpenCompliance(true)}
@@ -177,77 +170,69 @@ export default function Navbar() {
               <button className="hover:text-red-500">Compliance</button>
 
               {openCompliance && (
-                <div className="absolute -left-80 mt-1  mt-0 bg-[#F7F9FB] border border-gray-200 
-                shadow-2xl rounded-xl p-8 w-[1100px] grid grid-cols-4 gap-12 z-50">
+                <div className="absolute left-0 mt-2 bg-[#F7F9FB] border border-gray-200 shadow-2xl rounded-xl p-8 w-[1100px] grid grid-cols-4 gap-12 z-50">
 
-                  {/* COLUMN 1 — ENTITY + COMPANY LAW */}
+                  {/* ENTITY-WISE */}
                   <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220]">ENTITY-WISE COMPLIANCES</h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                    <h3 className="text-[13px] font-bold">ENTITY-WISE COMPLIANCES</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
                       {[
                         "Proprietorship Compliances",
                         "Partnership Compliances",
                         "LLP Compliances",
                         "One Person Company Compliances",
-                        "Private Limited Compliances"
-                      ].map((item) => (
-                        <li key={item}
-                        className="flex items-center gap-2 hover:text-[#00A7B6]">
-                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        "Private Limited Compliances",
+                      ].map(item => (
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight size={16} className="text-red-600" /> {item}
                         </li>
                       ))}
                     </ul>
 
-                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6">COMPANY LAW COMPLIANCES</h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
-                      {[
-                        "ROC Annual Compliances",
-                        "ROC Event Compliances"
-                      ].map((item) => (
-                        <li key={item}
-                        className="flex items-center gap-2 hover:text-[#00A7B6]">
-                          <ChevronRight className="text-red-600" size={16} /> {item}
+                    <h3 className="text-[13px] font-bold mt-6">COMPANY LAW COMPLIANCES</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
+                      {["ROC Annual Compliances", "ROC Event Compliances"].map(item => (
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight size={16} className="text-red-600" /> {item}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* COLUMN 2 — TAX COMPLIANCES + PLANNING */}
+                  {/* TAX COMPLIANCES */}
                   <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220]">TAX COMPLIANCES</h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                    <h3 className="text-[13px] font-bold">TAX COMPLIANCES</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
                       {[
                         "GST Compliances",
                         "Income Tax Filing",
                         "BookKeeping & Accounting",
-                        "PF ESI Compliances"
-                      ].map((item) => (
-                        <li key={item}
-                        className="flex items-center gap-2 hover:text-[#00A7B6]">
-                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        "PF ESI Compliances",
+                      ].map(item => (
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight size={16} className="text-red-600" /> {item}
                         </li>
                       ))}
                     </ul>
 
-                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6">TAX PLANNING</h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                    <h3 className="text-[13px] font-bold mt-6">TAX PLANNING</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
                       {[
                         "Tax Planning & Tax Saving Consultation",
                         "Advance Tax Calculation",
-                        "Personal Tax Advisory"
-                      ].map((item) => (
-                        <li key={item}
-                        className="flex items-center gap-2 hover:text-[#00A7B6]">
-                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        "Personal Tax Advisory",
+                      ].map(item => (
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight size={16} className="text-red-600" /> {item}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* COLUMN 3 — ITR FILING SERVICES */}
+                  {/* ITR SERVICES */}
                   <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220]">ITR FILING SERVICES</h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                    <h3 className="text-[13px] font-bold">ITR FILING SERVICES</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
                       {[
                         "Expert-Assisted ITR Filing",
                         "DIY ITR Filing",
@@ -257,20 +242,19 @@ export default function Navbar() {
                         "ITR Filing for Stock Market / F&O / Crypto",
                         "ITR Filing for Freelancers & Professionals",
                         "ITR Filing for Business Owners",
-                        "NRI / Foreign Income ITR Filing"
-                      ].map((item) => (
-                        <li key={item}
-                        className="flex items-center gap-2 hover:text-[#00A7B6]">
-                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        "NRI / Foreign Income ITR Filing",
+                      ].map(item => (
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight size={16} className="text-red-600" /> {item}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* COLUMN 4 — OTHER SERVICES */}
+                  {/* OTHER SERVICES */}
                   <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220]">OTHER SERVICES</h3>
-                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                    <h3 className="text-[13px] font-bold">OTHER SERVICES</h3>
+                    <ul className="mt-3 space-y-3 text-gray-800 text-[14px]">
                       {[
                         "Accounting & Bookkeeping Services",
                         "Business Tax Compliance",
@@ -281,32 +265,35 @@ export default function Navbar() {
                         "Handling Income Tax Notices",
                         "Tax Appeals & Dispute Resolution",
                         "US Tax Filing Services",
-                        "Post-Filing Support & Compliance"
-                      ].map((item) => (
-                        <li key={item}
-                        className="flex items-center gap-2 hover:text-[#00A7B6]">
+                        "Post-Filing Support & Compliance",
+                      ].map(item => (
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
                           <ChevronRight className="text-red-600" size={16} /> {item}
                         </li>
                       ))}
                     </ul>
                   </div>
-
                 </div>
               )}
             </div>
 
-            {/* REST MENU */}
+            {/* OTHER MENU BUTTONS */}
             <button className="hover:text-red-500">Go Online</button>
             <button className="hover:text-red-500">Tutorials</button>
             <button className="hover:text-red-500">Packages</button>
 
-            <a href={wpUrl} className="flex items-center gap-1 hover:text-red-500" target="_blank" rel="noopener noreferrer">
+            <a 
+              href={wpUrl}
+              className="flex items-center gap-1 hover:text-red-500"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <MessageCircle size={18} className="text-green-500" />
               Contact Us
             </a>
           </div>
 
-          {/* -------- MOBILE ICON -------- */}
+          {/* -------------------- MOBILE MENU ICON -------------------- */}
           <button className="lg:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? (
               <X size={28} className={scrolled ? "text-white" : "text-gray-700"} />
@@ -314,19 +301,143 @@ export default function Navbar() {
               <Menu size={28} className={scrolled ? "text-white" : "text-gray-700"} />
             )}
           </button>
-
         </div>
       </div>
 
-      {/* -------- MOBILE MENU -------- */}
+      {/* -------------------- MOBILE MENU -------------------- */}
       {isOpen && (
         <div className="lg:hidden bg-white px-6 py-4 border-t shadow-md space-y-6">
-          <button className="block text-left font-semibold text-[18px] text-gray-800">Startup India</button>
-          <button className="block text-left font-semibold text-[18px] text-gray-800">Registration</button>
-          <button className="block text-left font-semibold text-[18px] text-gray-800">Compliance</button>
+
+          <button className="block text-left font-semibold text-[18px] text-gray-800">
+            Startup India
+          </button>
+
+          {/* ---------------- MOBILE REGISTRATION DROPDOWN ---------------- */}
+          <div>
+            <button
+              onClick={() => setMobileRegOpen(!mobileRegOpen)}
+              className="w-full text-left font-semibold text-[18px] text-gray-800 flex justify-between items-center"
+            >
+              Registration
+              <ChevronRight className={`transition-transform ${mobileRegOpen ? "rotate-90" : ""}`} />
+            </button>
+
+            {mobileRegOpen && (
+              <div className="pl-4 mt-3 space-y-2 text-gray-700 max-h-72 overflow-y-auto pr-3 border-l-2 border-gray-200">
+
+                <p className="font-bold text-[15px] mt-2">Company Registration</p>
+                {[
+                  "Proprietorship Registration",
+                  "Partnership Registration",
+                  "Limited Liability Partnership",
+                  "One Person Company Registration",
+                  "Private Limited Company Registration",
+                  "Public Limited Company Registration",
+                ].map(item => (
+                  <p key={item} className="text-[14px] pl-3">• {item}</p>
+                ))}
+
+                <p className="font-bold text-[15px] mt-4">Special Entity Registration</p>
+                {[
+                  "Section-8 Company Registration",
+                  "Trust Registration",
+                  "Society Registration",
+                ].map(item => (
+                  <p key={item} className="text-[14px] pl-3">• {item}</p>
+                ))}
+
+                <p className="font-bold text-[15px] mt-4">Industry Registration</p>
+                {["FSSAI Registration", "Import Export Code Registration"].map(item => (
+                  <p key={item} className="text-[14px] pl-3">• {item}</p>
+                ))}
+
+                <p className="font-bold text-[15px] mt-4">Tax Registration</p>
+                {["GST Registration", "PF ESI Registration"].map(item => (
+                  <p key={item} className="text-[14px] pl-3">• {item}</p>
+                ))}
+
+                <p className="font-bold text-[15px] mt-4">Certification</p>
+                <p className="text-[14px] pl-3">• ISO Certification</p>
+              </div>
+            )}
+          </div>
+
+          {/* ---------------- MOBILE COMPLIANCE DROPDOWN ---------------- */}
+          <div>
+            <button
+              onClick={() => setMobileCompOpen(!mobileCompOpen)}
+              className="w-full text-left font-semibold text-[18px] text-gray-800 flex justify-between items-center"
+            >
+              Compliance
+              <ChevronRight className={`transition-transform ${mobileCompOpen ? "rotate-90" : ""}`} />
+            </button>
+
+            {mobileCompOpen && (
+              <div className="pl-4 mt-3 space-y-2 text-gray-700 max-h-72 overflow-y-auto pr-3 border-l-2 border-gray-200">
+                
+                <p className="font-bold text-[15px]">Entity-wise Compliances</p>
+                {[
+                  "Proprietorship Compliances",
+                  "Partnership Compliances",
+                  "LLP Compliances",
+                  "One Person Company Compliances",
+                  "Private Limited Compliances",
+                ].map(item => (
+                  <p key={item} className="text-[14px] pl-3">• {item}</p>
+                ))}
+
+                <p className="font-bold text-[15px] mt-4">Company Law Compliances</p>
+                {["ROC Annual Compliances", "ROC Event Compliances"].map(item => (
+                  <p key={item} className="text-[14px] pl-3">• {item}</p>
+                ))}
+
+                <p className="font-bold text-[15px] mt-4">Tax Compliances</p>
+                {[
+                  "GST Compliances",
+                  "Income Tax Filing",
+                  "BookKeeping & Accounting",
+                  "PF ESI Compliances",
+                ].map(item => (
+                  <p key={item} className="text-[14px] pl-3">• {item}</p>
+                ))}
+
+                <p className="font-bold text-[15px] mt-4">ITR Filing Services</p>
+                {[
+                  "Expert-Assisted ITR Filing",
+                  "DIY ITR Filing",
+                  "Belated ITR Filing",
+                  "Revised ITR Filing",
+                  "ITR Filing for Capital Gains",
+                  "ITR Filing for Stock Market / F&O / Crypto",
+                  "ITR Filing for Freelancers & Professionals",
+                  "ITR Filing for Business Owners",
+                  "NRI / Foreign Income ITR Filing",
+                ].map(item => (
+                  <p key={item} className="text-[14px] pl-3">• {item}</p>
+                ))}
+
+                <p className="font-bold text-[15px] mt-4">Other Services</p>
+                {[
+                  "Accounting & Bookkeeping Services",
+                  "Business Tax Compliance",
+                  "Startup & Business Registration Support",
+                  "PAN Services",
+                  "GST Registration & Filing",
+                  "TDS Return Filing",
+                  "Handling Income Tax Notices",
+                  "Tax Appeals & Dispute Resolution",
+                  "US Tax Filing Services",
+                  "Post-Filing Support & Compliance",
+                ].map(item => (
+                  <p key={item} className="text-[14px] pl-3">• {item}</p>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* OTHER MOBILE BUTTONS */}
           <button className="block text-left font-semibold text-[18px] text-gray-800">Go Online</button>
           <button className="block text-left font-semibold text-[18px] text-gray-800">Tutorials</button>
-          <button className="block text-left font-semibold text-[18px] text-gray-800">Downloads</button>
           <button className="block text-left font-semibold text-[18px] text-gray-800">Packages</button>
 
           <a href={wpUrl} className="flex items-center gap-2 text-[18px] font-semibold text-gray-800">
