@@ -178,7 +178,7 @@ ${form.message}
       {/* ------------------ STEP 3 ------------------ */}
       {step === 3 && (
         <>
-          <h2 className="text-xl font-bold mb-4">Describe Your Query</h2>
+          <h2 className="text-xl font-bold mb-4">Describe Your Query (Requrements)</h2>
 
           <textarea
             name="message"

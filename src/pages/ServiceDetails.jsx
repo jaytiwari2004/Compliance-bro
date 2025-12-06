@@ -38,9 +38,10 @@ export default function ServiceDetails() {
               <h3 className="text-xl font-semibold mb-6">We’re here to help</h3>
 
               <p className="mb-4 leading-relaxed">
-                LG-19, Mangal City Mall, <br />
-                Scheme No. 54, Indore 452010, <br />
-                Madhya Pradesh, India
+               Indore    452010 (M.P) <br />
+               Bhopal   462001 (M.P) <br />
+               Mumbai  400001 (MH) <br />
+               Ernakulam  (Kerala), India
               </p>
 
               <p className="mb-3 font-semibold">+91 7999981173</p>

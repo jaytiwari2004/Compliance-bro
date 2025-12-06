@@ -11,12 +11,11 @@ export default function Hero() {
         <div className="space-y-6 z-10">
           <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight">
             India's Most Trusted <br />
-            <span className="text-emerald-600">Income Tax e-Filing</span> Platform
+            <span className="text-emerald-600">Compliance services</span> Platform
           </h1>
 
           <p className="text-lg text-gray-600 max-w-lg">
-            Maximize your tax refund with ComplianceBro. File your ITR in under 4 minutes with
-            our AI-powered engine or hire a Personal CA.
+           Register your Company within seven working hours with support anytime (24*7)
           </p>
 
           {/* BUTTONS */}

@@ -68,7 +68,7 @@ export default function Navbar() {
               <button className="hover:text-red-500">Registration</button>
 
               {openDropdown && (
-                <div className="absolute left-0 mt-2 bg-[#F7F9FB] border border-gray-200 shadow-2xl rounded-xl p-8 w-[950px] grid grid-cols-4 gap-12 z-50">
+                <div className="absolute -left-32 mt-2 bg-[#F7F9FB] border border-gray-200 shadow-2xl rounded-xl p-8 w-[950px] grid grid-cols-4 gap-12 z-50">
                   
                   {/* COMPANY REGISTRATION */}
                   <div>
@@ -170,7 +170,7 @@ export default function Navbar() {
               <button className="hover:text-red-500">Compliance</button>
 
               {openCompliance && (
-                <div className="absolute left-0 mt-2 bg-[#F7F9FB] border border-gray-200 shadow-2xl rounded-xl p-8 w-[1100px] grid grid-cols-4 gap-12 z-50">
+                <div className="absolute -left-80 mt-1 bg-[#F7F9FB] border border-gray-200 shadow-2xl rounded-xl p-8 w-[1100px] grid grid-cols-4 gap-12 z-50">
 
                   {/* ENTITY-WISE */}
                   <div>
@@ -279,8 +279,8 @@ export default function Navbar() {
 
             {/* OTHER MENU BUTTONS */}
             <button className="hover:text-red-500">Go Online</button>
-            <button className="hover:text-red-500">Tutorials</button>
-            <button className="hover:text-red-500">Packages</button>
+            <button className="hover:text-red-500">Latest update</button>
+            <button className="hover:text-red-500">Gallery</button>
 
             <a 
               href={wpUrl}
