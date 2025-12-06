@@ -37,13 +37,8 @@ const Services = () => {
 
     // ITR SERVICES
     "Expert-Assisted ITR Filing",
-    "DIY ITR Filing",
-    "Belated ITR Filing",
-    "Revised ITR Filing",
-    "ITR Filing for Capital Gains",
-    "ITR Filing for Stock Market / F&O / Crypto",
-    "ITR Filing for Freelancers & Professionals",
-    "ITR Filing for Business Owners",
+    
+    
     "NRI / Foreign Income ITR Filing",
     "Tax Planning & Tax Saving Consultation",
     "Advance Tax Calculation",

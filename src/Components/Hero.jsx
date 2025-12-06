@@ -15,7 +15,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg text-gray-600 max-w-lg">
-           Register your Company within seven working hours with support anytime (24*7)
+            Register your Company within seven working hours with support anytime (24*7)
           </p>
 
           {/* BUTTONS */}
@@ -31,7 +31,7 @@ export default function Hero() {
               File ITR Now
             </button>
 
-            {/* Book Tax Expert → Smooth Zoom */}
+            {/* Book Tax Expert */}
             <Link
               to="/service/book-expert"
               className="
@@ -42,6 +42,19 @@ export default function Hero() {
               "
             >
               Book a Tax Expert
+            </Link>
+
+            {/* NEW — ROC Services Button */}
+            <Link
+              to="/service/roc-services"
+              className="
+                bg-white border-2 border-emerald-600 text-emerald-600 px-8 py-4 rounded-xl
+                font-bold text-lg text-center
+                transition-transform duration-300 ease-out
+                hover:scale-105 active:scale-95 hover:bg-emerald-50
+              "
+            >
+              ROC Services
             </Link>
 
           </div>
