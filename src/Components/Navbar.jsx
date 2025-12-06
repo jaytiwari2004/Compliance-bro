@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Menu, MessageCircle, X, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
+  const [openCompliance, setOpenCompliance] = useState(false); // NEW
   const [scrolled, setScrolled] = useState(false);
 
-  // Detect scroll
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // WhatsApp link
   const whatsappMessage = "Welcome to ComplianceBro! How can we help you today?";
   const wpUrl = `https://wa.me/917999981173?text=${encodeURIComponent(
     whatsappMessage
@@ -30,13 +30,14 @@ export default function Navbar() {
           
           {/* LOGO */}
           <div className="flex items-center gap-6">
-            <h1
-              className={`text-2xl md:text-3xl font-bold ${
+            <Link
+              to="/"
+              className={`text-2xl md:text-3xl font-bold cursor-pointer ${
                 scrolled ? "text-white" : "text-[#0C3C46]"
               }`}
             >
               Compliance<span className="text-[#00A7B6]">Bro</span>
-            </h1>
+            </Link>
 
             <span
               className={`hidden lg:inline px-3 py-1 text-xs font-semibold rounded-full uppercase ${
@@ -49,7 +50,7 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* DESKTOP MENU */}
+          {/* -------- DESKTOP MENU -------- */}
           <div
             className={`hidden lg:flex items-center gap-10 text-[15px] font-semibold ${
               scrolled ? "text-gray-200" : "text-gray-700"
@@ -57,7 +58,7 @@ export default function Navbar() {
           >
             <button className="hover:text-red-500">Startup India</button>
 
-            {/* DROPDOWN */}
+            {/* ------ REGISTRATION DROPDOWN ------ */}
             <div
               className="relative"
               onMouseEnter={() => setOpenDropdown(true)}
@@ -66,11 +67,12 @@ export default function Navbar() {
               <button className="hover:text-red-500">Registration</button>
 
               {openDropdown && (
-                <div className="absolute -left-28 mt-1 bg-[#F7F9FB] border border-gray-200 shadow-2xl rounded-xl p-8 w-[950px] grid grid-cols-4 gap-12 z-50">
+                <div className="absolute -left-28 mt-0 bg-[#F7F9FB] border border-gray-200 
+                shadow-2xl rounded-xl p-8 w-[950px] grid grid-cols-4 gap-12 z-50">
                   
                   {/* COLUMN — Company */}
                   <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220] tracking-wide">
+                    <h3 className="text-[13px] font-bold text-[#0B1220]">
                       COMPANY REGISTRATION
                     </h3>
                     <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
@@ -82,25 +84,19 @@ export default function Navbar() {
                         "Private Limited Company Registration",
                         "Public Limited Company Registration",
                       ].map((item) => (
-                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6] transition">
-                          <ChevronRight size={16} className="text-red-600" />
-                          {item}
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight size={16} className="text-red-600" /> {item}
                         </li>
                       ))}
                     </ul>
 
-                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6 tracking-wide">
+                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6">
                       SPECIAL ENTITY REGISTRATION
                     </h3>
                     <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
-                      {[
-                        "Section-8 Company Registration",
-                        "Trust Registration",
-                        "Society Registration",
-                      ].map((item) => (
-                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6] transition">
-                          <ChevronRight size={16} className="text-red-600" />
-                          {item}
+                      {["Section-8 Company Registration", "Trust Registration", "Society Registration"].map((item) => (
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight size={16} className="text-red-600" /> {item}
                         </li>
                       ))}
                     </ul>
@@ -108,26 +104,22 @@ export default function Navbar() {
 
                   {/* COLUMN — Industry */}
                   <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220] tracking-wide">
+                    <h3 className="text-[13px] font-bold text-[#0B1220]">
                       INDUSTRY SPECIFIC REGISTRATION
                     </h3>
                     <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
                       {["FSSAI Registration", "Import Export Code Registration"].map((item) => (
-                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6] transition">
-                          <ChevronRight size={16} className="text-red-600" />
-                          {item}
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight size={16} className="text-red-600" /> {item}
                         </li>
                       ))}
                     </ul>
 
-                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6 tracking-wide">
-                      TAX REGISTRATION
-                    </h3>
+                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6">TAX REGISTRATION</h3>
                     <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
                       {["GST Registration", "PF ESI Registration"].map((item) => (
-                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6] transition">
-                          <ChevronRight size={16} className="text-red-600" />
-                          {item}
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight size={16} className="text-red-600" /> {item}
                         </li>
                       ))}
                     </ul>
@@ -135,32 +127,28 @@ export default function Navbar() {
 
                   {/* COLUMN — IPR */}
                   <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220] tracking-wide">
+                    <h3 className="text-[13px] font-bold text-[#0B1220]">
                       INTELLECTUAL PROPERTY RIGHTS
                     </h3>
                     <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
                       {["Trademark Registration", "Copyright"].map((item) => (
-                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6] transition">
-                          <ChevronRight size={16} className="text-red-600" />
-                          {item}
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight size={16} className="text-red-600" /> {item}
                         </li>
                       ))}
                     </ul>
 
-                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6 tracking-wide">
-                      CERTIFICATION
-                    </h3>
+                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6">CERTIFICATION</h3>
                     <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
-                      <li className="flex items-center gap-2 hover:text-[#00A7B6] transition">
-                        <ChevronRight size={16} className="text-red-600" />
-                        ISO Certification
+                      <li className="flex items-center gap-2 hover:text-[#00A7B6]">
+                        <ChevronRight size={16} className="text-red-600" /> ISO Certification
                       </li>
                     </ul>
                   </div>
 
-                  {/* COLUMN — After incorporation */}
+                  {/* COLUMN — After Incorporation */}
                   <div>
-                    <h3 className="text-[13px] font-bold text-[#0B1220] tracking-wide">
+                    <h3 className="text-[13px] font-bold text-[#0B1220]">
                       THINGS TO DO AFTER INCORPORATION
                     </h3>
                     <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
@@ -169,9 +157,8 @@ export default function Navbar() {
                         "Stage-2: Industry Specific Necessity",
                         "Stage-3: Go Live & Get Funding",
                       ].map((item) => (
-                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6] transition">
-                          <ChevronRight size={16} className="text-red-600" />
-                          {item}
+                        <li key={item} className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight size={16} className="text-red-600" /> {item}
                         </li>
                       ))}
                     </ul>
@@ -181,25 +168,145 @@ export default function Navbar() {
               )}
             </div>
 
-            <button className="hover:text-red-500">Compliance</button>
+            {/* -------- NEW COMPLIANCE DROPDOWN -------- */}
+            <div
+              className="relative"
+              onMouseEnter={() => setOpenCompliance(true)}
+              onMouseLeave={() => setOpenCompliance(false)}
+            >
+              <button className="hover:text-red-500">Compliance</button>
+
+              {openCompliance && (
+                <div className="absolute -left-80 mt-1  mt-0 bg-[#F7F9FB] border border-gray-200 
+                shadow-2xl rounded-xl p-8 w-[1100px] grid grid-cols-4 gap-12 z-50">
+
+                  {/* COLUMN 1 — ENTITY + COMPANY LAW */}
+                  <div>
+                    <h3 className="text-[13px] font-bold text-[#0B1220]">ENTITY-WISE COMPLIANCES</h3>
+                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                      {[
+                        "Proprietorship Compliances",
+                        "Partnership Compliances",
+                        "LLP Compliances",
+                        "One Person Company Compliances",
+                        "Private Limited Compliances"
+                      ].map((item) => (
+                        <li key={item}
+                        className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6">COMPANY LAW COMPLIANCES</h3>
+                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                      {[
+                        "ROC Annual Compliances",
+                        "ROC Event Compliances"
+                      ].map((item) => (
+                        <li key={item}
+                        className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* COLUMN 2 — TAX COMPLIANCES + PLANNING */}
+                  <div>
+                    <h3 className="text-[13px] font-bold text-[#0B1220]">TAX COMPLIANCES</h3>
+                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                      {[
+                        "GST Compliances",
+                        "Income Tax Filing",
+                        "BookKeeping & Accounting",
+                        "PF ESI Compliances"
+                      ].map((item) => (
+                        <li key={item}
+                        className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <h3 className="text-[13px] font-bold text-[#0B1220] mt-6">TAX PLANNING</h3>
+                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                      {[
+                        "Tax Planning & Tax Saving Consultation",
+                        "Advance Tax Calculation",
+                        "Personal Tax Advisory"
+                      ].map((item) => (
+                        <li key={item}
+                        className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* COLUMN 3 — ITR FILING SERVICES */}
+                  <div>
+                    <h3 className="text-[13px] font-bold text-[#0B1220]">ITR FILING SERVICES</h3>
+                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                      {[
+                        "Expert-Assisted ITR Filing",
+                        "DIY ITR Filing",
+                        "Belated ITR Filing",
+                        "Revised ITR Filing",
+                        "ITR Filing for Capital Gains",
+                        "ITR Filing for Stock Market / F&O / Crypto",
+                        "ITR Filing for Freelancers & Professionals",
+                        "ITR Filing for Business Owners",
+                        "NRI / Foreign Income ITR Filing"
+                      ].map((item) => (
+                        <li key={item}
+                        className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* COLUMN 4 — OTHER SERVICES */}
+                  <div>
+                    <h3 className="text-[13px] font-bold text-[#0B1220]">OTHER SERVICES</h3>
+                    <ul className="mt-3 space-y-3 text-[14px] text-gray-800">
+                      {[
+                        "Accounting & Bookkeeping Services",
+                        "Business Tax Compliance",
+                        "Startup & Business Registration Support",
+                        "PAN Services",
+                        "GST Registration & Filing",
+                        "TDS Return Filing",
+                        "Handling Income Tax Notices",
+                        "Tax Appeals & Dispute Resolution",
+                        "US Tax Filing Services",
+                        "Post-Filing Support & Compliance"
+                      ].map((item) => (
+                        <li key={item}
+                        className="flex items-center gap-2 hover:text-[#00A7B6]">
+                          <ChevronRight className="text-red-600" size={16} /> {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                </div>
+              )}
+            </div>
+
+            {/* REST MENU */}
             <button className="hover:text-red-500">Go Online</button>
             <button className="hover:text-red-500">Tutorials</button>
-            <button className="hover:text-red-500">Downloads</button>
             <button className="hover:text-red-500">Packages</button>
 
-            {/* Contact Us */}
-            <a
-              href={wpUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 hover:text-red-500"
-            >
+            <a href={wpUrl} className="flex items-center gap-1 hover:text-red-500" target="_blank" rel="noopener noreferrer">
               <MessageCircle size={18} className="text-green-500" />
               Contact Us
             </a>
           </div>
 
-          {/* MOBILE ICON */}
+          {/* -------- MOBILE ICON -------- */}
           <button className="lg:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? (
               <X size={28} className={scrolled ? "text-white" : "text-gray-700"} />
@@ -211,46 +318,21 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* -------- MOBILE MENU -------- */}
       {isOpen && (
         <div className="lg:hidden bg-white px-6 py-4 border-t shadow-md space-y-6">
+          <button className="block text-left font-semibold text-[18px] text-gray-800">Startup India</button>
+          <button className="block text-left font-semibold text-[18px] text-gray-800">Registration</button>
+          <button className="block text-left font-semibold text-[18px] text-gray-800">Compliance</button>
+          <button className="block text-left font-semibold text-[18px] text-gray-800">Go Online</button>
+          <button className="block text-left font-semibold text-[18px] text-gray-800">Tutorials</button>
+          <button className="block text-left font-semibold text-[18px] text-gray-800">Downloads</button>
+          <button className="block text-left font-semibold text-[18px] text-gray-800">Packages</button>
 
-          <button className="block w-full text-left font-semibold text-[18px] text-gray-800">
-            Startup India
-          </button>
-
-          <button className="block w-full text-left font-semibold text-[18px] text-gray-800">
-            Registration
-          </button>
-
-          <button className="block w-full text-left font-semibold text-[18px] text-gray-800">
-            Compliance
-          </button>
-
-          <button className="block w-full text-left font-semibold text-[18px] text-gray-800">
-            Go Online
-          </button>
-
-          <button className="block w-full text-left font-semibold text-[18px] text-gray-800">
-            Tutorials
-          </button>
-
-          <button className="block w-full text-left font-semibold text-[18px] text-gray-800">
-            Downloads
-          </button>
-
-          <button className="block w-full text-left font-semibold text-[18px] text-gray-800">
-            Packages
-          </button>
-
-          <a
-            href={wpUrl}
-            className="flex items-center gap-2 font-semibold text-[18px] text-gray-800"
-          >
+          <a href={wpUrl} className="flex items-center gap-2 text-[18px] font-semibold text-gray-800">
             <MessageCircle className="text-green-600" size={20} />
             Contact Us
           </a>
-
         </div>
       )}
     </nav>

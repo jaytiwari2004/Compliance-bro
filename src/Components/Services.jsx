@@ -1,25 +1,109 @@
 import React from "react";
 import ServiceCard from "./ServiceCard";
-import { FileText, Star, TrendingUp, Globe, ShieldCheck } from "lucide-react";
+import {
+  ClipboardDocumentListIcon,
+  ClipboardDocumentCheckIcon,
+  DocumentTextIcon,
+  BriefcaseIcon,
+  BuildingOffice2Icon,
+  BuildingLibraryIcon,
+  ClipboardIcon,
+  ChartBarSquareIcon,
+  CalculatorIcon,
+  GlobeAltIcon,
+  UserGroupIcon,
+  BanknotesIcon,
+} from "@heroicons/react/24/outline";
 
-export default function Services(){
+const Services = () => {
+  const allServices = [
+    // ENTITY WISE COMPLIANCES
+    "Proprietorship Compliances",
+    "Partnership Compliances",
+    "LLP Compliances",
+    "One Person Company Compliances",
+    "Private Limited Compliances",
+
+    // COMPANY LAW
+    "ROC Annual Compliances",
+    "ROC Event Compliances",
+    "ROC Annual Filing",
+
+    // TAX COMPLIANCES
+    "GST Compliances",
+    "Income Tax Filing",
+    "BookKeeping & Accounting",
+    "PF ESI Compliances",
+
+    // ITR SERVICES
+    "Expert-Assisted ITR Filing",
+    "DIY ITR Filing",
+    "Belated ITR Filing",
+    "Revised ITR Filing",
+    "ITR Filing for Capital Gains",
+    "ITR Filing for Stock Market / F&O / Crypto",
+    "ITR Filing for Freelancers & Professionals",
+    "ITR Filing for Business Owners",
+    "NRI / Foreign Income ITR Filing",
+    "Tax Planning & Tax Saving Consultation",
+    "Advance Tax Calculation",
+    "Personal Tax Advisory",
+    "Accounting & Bookkeeping Services",
+    "Business Tax Compliance",
+    "Startup & Business Registration Support",
+    "PAN Services",
+    "GST Registration & Filing",
+    "TDS Return Filing",
+    "Handling Income Tax Notices",
+    "Tax Appeals & Dispute Resolution",
+    "US Tax Filing Services",
+    "Post-Filing Support & Compliance",
+  ];
+
+  const icons = [
+    DocumentTextIcon,
+    ClipboardDocumentListIcon,
+    ClipboardIcon,
+    BriefcaseIcon,
+    BuildingOffice2Icon,
+    BuildingLibraryIcon,
+    ClipboardDocumentCheckIcon,
+    DocumentTextIcon,
+    ChartBarSquareIcon,
+    CalculatorIcon,
+    UserGroupIcon,
+    BanknotesIcon,
+  ];
+
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Our Premium Tax Services</h2>
-          <p className="text-gray-500 max-w-2xl mx-auto">From DIY filing to dedicated Chartered Accountant support.</p>
+    <section className="py-16 bg-[#f4f8fb]">
+      <div className="max-w-7xl mx-auto px-4">
+        
+        <h2 className="text-3xl font-bold text-center mb-10">
+          All Services We Offer
+        </h2>
+
+        {/* GRID OF ALL 34 SERVICES */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {allServices.map((name, index) => {
+            const Icon = icons[index % icons.length];
+            
+            return (
+              <ServiceCard
+                key={index}
+                id={index}
+                Icon={Icon}
+                title={name}
+                desc=""
+                link="Know More →"
+              />
+            );
+          })}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <ServiceCard icon={<FileText className="w-6 h-6" />} title="Self ITR Filing" text="File your taxes independently using our guided wizard. It's fast, secure, and error-free." linkText="Start Filing Free" />
-          <ServiceCard icon={<Star className="w-6 h-6" />} title="CA Assisted Filing" text="Get a dedicated eCA to handle your filing. We find every deduction to maximize your refund." linkText="Book an Expert" badge="Best Seller" />
-          <ServiceCard icon={<TrendingUp className="w-6 h-6" />} title="Capital Gains" text="Expert computation for sale of property, stocks, mutual funds, and crypto assets." linkText="Calculate Now" />
-          <ServiceCard icon={<Globe className="w-6 h-6" />} title="NRI Tax Services" text="Comprehensive tax solutions for NRIs with Indian income sources and DTAA compliance." linkText="Consult Experts" />
-          <ServiceCard icon={<FileText className="w-6 h-6" />} title="Upload Form 16" text="The fastest way to file. Simply upload your PDF and let our system do the rest." linkText="Upload PDF" />
-          <ServiceCard icon={<ShieldCheck className="w-6 h-6" />} title="Notice Management" text="Received a notice u/s 143(1)? Our experts draft legal responses for you." linkText="Resolve Notice" />
-        </div>
       </div>
     </section>
   );
-}
+};
+
+export default Services;
